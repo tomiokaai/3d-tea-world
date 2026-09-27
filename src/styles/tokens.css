@@ -1,0 +1,29 @@
+:root {
+  /* Color — steeped tea, deliberately not the generic cream/terracotta
+     or near-black/acid-green defaults. */
+  --tea-ink: #14231c;       /* deep bottle-green background, primary dark surface */
+  --tea-liquor: #2e2013;    /* steeped-tea brown, secondary dark surface */
+  --tea-leaf: #4f6f52;      /* muted tea-leaf green, secondary accent */
+  --tea-gold: #c89b3c;      /* honey/amber accent — used once per screen */
+  --tea-parchment: #efe7d8; /* warm ivory for text on dark, label surfaces */
+  --tea-clay: #8b5e3c;      /* soil/wood accent for tactile, earthy details */
+
+  /* Type */
+  --font-display: 'Fraunces', 'Iowan Old Style', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --type-scale-hero: clamp(2.75rem, 5vw + 1rem, 5.5rem);
+  --type-scale-h2: clamp(1.75rem, 2.4vw + 1rem, 2.75rem);
+  --type-scale-body: 1.0625rem;
+  --type-scale-small: 0.875rem;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6.5rem;
+
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-scene: 1.4s;
+}

@@ -1,0 +1,169 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--tea-ink);
+  color: var(--tea-parchment);
+  font-family: var(--font-body);
+  font-size: var(--type-scale-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--tea-gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.app-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  max-width: 34rem;
+  padding: 0 var(--space-5);
+  pointer-events: none;
+}
+
+.hero__title {
+  font-size: var(--type-scale-hero);
+  font-style: italic;
+  color: var(--tea-parchment);
+}
+
+.hero__body {
+  margin-top: var(--space-3);
+  max-width: 30ch;
+  color: color-mix(in srgb, var(--tea-parchment) 75%, transparent);
+}
+
+.hero__cta {
+  pointer-events: auto;
+  margin-top: var(--space-4);
+  align-self: flex-start;
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--tea-gold);
+  font-family: var(--font-body);
+  font-size: var(--type-scale-small);
+  cursor: pointer;
+}
+
+.hero__cta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0.3);
+  transform-origin: left;
+  transition: transform var(--duration-scene) var(--ease-cinematic);
+}
+
+.hero__cta:hover::after {
+  transform: scaleX(1);
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: var(--space-5);
+  left: var(--space-5);
+  color: color-mix(in srgb, var(--tea-parchment) 55%, transparent);
+}
+
+.scroll-cue__line {
+  display: block;
+  width: 1px;
+  height: 2.5rem;
+  background: currentColor;
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: var(--tea-ink);
+  color: var(--tea-parchment);
+}
+
+.loading-screen__mark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.loading-screen__bar {
+  width: 12rem;
+  height: 1px;
+  background: color-mix(in srgb, var(--tea-parchment) 20%, transparent);
+  overflow: hidden;
+}
+
+.loading-screen__fill {
+  height: 100%;
+  background: var(--tea-gold);
+  transform-origin: left;
+  transition: transform 0.2s linear;
+}
