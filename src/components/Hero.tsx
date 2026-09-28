@@ -1,12 +1,16 @@
+import { journeyStops } from '@/config/journey'
+
+const [hero] = journeyStops
+
 export function Hero() {
+  const begin = () =>
+    document.getElementById('stop-africa')?.scrollIntoView({ behavior: 'smooth' })
+
   return (
-    <section className="hero">
-      <h1 className="hero__title">Steeped in origin.</h1>
-      <p className="hero__body">
-        From volcanic highland soil to the cup in your hands — follow one leaf
-        through the world that shapes its character.
-      </p>
-      <button className="hero__cta" type="button">
+    <section id="stop-hero" className="hero">
+      <h1 className="hero__title">{hero.title}</h1>
+      <p className="hero__body">{hero.body}</p>
+      <button className="hero__cta" type="button" onClick={begin}>
         Begin the journey
       </button>
       <div className="scroll-cue" aria-hidden="true">

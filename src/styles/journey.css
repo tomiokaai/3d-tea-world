@@ -1,0 +1,109 @@
+.journey {
+  position: relative;
+  z-index: 1;
+}
+
+.stop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  height: 100svh;
+  padding: 0 var(--space-5);
+  pointer-events: none;
+}
+
+/* Soft scrim keeps captions readable over bright terrain. */
+.stop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--tea-ink) 72%, transparent),
+    transparent 62%
+  );
+}
+
+.stop[data-side='right'] {
+  justify-content: flex-end;
+}
+
+.stop[data-side='right']::before {
+  background: linear-gradient(
+    270deg,
+    color-mix(in srgb, var(--tea-ink) 72%, transparent),
+    transparent 62%
+  );
+}
+
+.stop__copy {
+  max-width: 28rem;
+}
+
+.stop__title {
+  font-size: var(--type-scale-h2);
+  font-style: italic;
+  text-shadow: 0 1px 28px color-mix(in srgb, var(--tea-ink) 80%, transparent);
+}
+
+.stop__body {
+  margin: var(--space-2) 0 0;
+  max-width: 34ch;
+  color: color-mix(in srgb, var(--tea-parchment) 82%, transparent);
+  text-shadow: 0 1px 20px color-mix(in srgb, var(--tea-ink) 80%, transparent);
+}
+
+.rail {
+  position: fixed;
+  right: var(--space-3);
+  top: 50%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  transform: translateY(-50%);
+}
+
+.rail__dot {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--tea-parchment) 60%, transparent);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition:
+    background var(--duration-scene) var(--ease-cinematic),
+    transform var(--duration-scene) var(--ease-cinematic);
+}
+
+/* Larger invisible hit area for touch. */
+.rail__dot::after {
+  content: '';
+  position: absolute;
+  inset: -0.6rem;
+}
+
+.rail__dot[aria-current='step'] {
+  background: var(--tea-gold);
+  border-color: var(--tea-gold);
+  transform: scale(1.4);
+}
+
+@media (max-width: 767px) {
+  .stop {
+    align-items: flex-end;
+    padding: 0 var(--space-3) var(--space-6);
+  }
+
+  .stop[data-side='right'] {
+    justify-content: flex-start;
+  }
+
+  .rail {
+    right: 0.75rem;
+  }
+}

@@ -2,16 +2,6 @@
 
 Premium 3D tea e-commerce — cinematic, Three.js/React, Richard Tea ilhomlantirgan, lekin original dizayn va UX.
 
-## Phase 1 (shu commit)
-
-- Vite + React + TypeScript + `@react-three/fiber`/`drei` skeleton
-- Design tokens: `src/styles/tokens.css` — tea-ink/liquor/leaf/gold/parchment/clay palette, Fraunces (display, italic) + Inter (body)
-- Reusable `Product` schema: `src/types/product.ts`
-- Reusable packaging system: `src/three/TeaBox.tsx` — bitta geometry, material/label per mahsulot almashadi; keyinchalik `product.model` GLB bilan almashtiriladi (Blender export)
-- Camera / lighting / loading: `src/three/CameraRig.tsx`, `src/three/Lighting.tsx`, `src/components/LoadingScreen.tsx`
-- Hero UI overlay: `src/components/Hero.tsx`
-- Mobile lightweight mode asosi: `src/three/Experience.tsx` ichida `dpr`/`shadows`/`antialias` viewport bo'yicha pasayadi
-
 ## Run
 
 ```bash
@@ -19,13 +9,26 @@ npm install
 npm run dev
 ```
 
+## Arxitektura
+
+- `src/config/journey.ts` — yagona manba: har bir scroll stop (kamera, target, sky/fog, sarlavha/matn). `WORLD` — sahnalar joylashuvi
+- `src/config/quality.ts` — desktop/mobile tier (dpr, shadows, instance soni, particles)
+- `src/state/scrollState.ts` — `target` (ScrollTrigger) va `current` (damped) — React renderni chetlab o'tadi
+- `src/three/` — `CameraRig` (Catmull-Rom yo'l), `Atmosphere` (sky/fog blend), `SceneGate` (fog ortida qolgan sahnani yashiradi), `ScrollDriver`
+- `src/three/scenes/` — `AfricaScene`, `PlantationScene`, `TeaLeafScene`, `ProductionScene` (+ `production/` stansiyalari)
+- `src/three/utils/InstancedItems.tsx` — bitta draw call bilan ko'p ob'ekt
+- `src/components/` — `Journey` (scroll konteyner), `JourneyRail` (bo'limlar navigatsiyasi), `Hero`, `LoadingScreen`
+- `src/types/product.ts`, `src/data/products.ts` — `Product` schema va katalog
+
+Yangi stop qo'shish: `journeyStops`'ga yozuv qo'shing — kamera yo'li, atmosfera va caption avtomatik moslashadi.
+
 ## Holat
 
-GitHub / Google Drive / Figma / Notion / Linear / Vercel tekshirildi — bu loyiha uchun ular bo'sh edi, shuning uchun Phase 1 noldan qurildi. Hali GLB/rasm assetlar yo'q (`TeaBox` procedural placeholder geometriya bilan ishlayapti).
+- **Phase 1** — scaffold, tokens, `Product` schema, `TeaBox`, camera/lighting, loading screen
+- **Phase 2** — scroll-driven camera (GSAP ScrollTrigger), Africa → Plantation → Leaf → Production (rolling/drying/packaging) → Box. Barcha 3D hozircha procedural placeholder; Blender GLB assetlar keyin ulanadi
 
 ## Keyingi fazalar
 
-- **Phase 2** — scroll-driven camera (GSAP ScrollTrigger `CameraRig` ichida), Africa/Plantation/Production sahnalari
-- **Phase 3** — 51 ta mahsulot (Notion/Drive'dan), Collection, Product Page, 3D viewer, Cart
-- **Phase 4** — responsive/mobile lightweight mode, animatsiyalar, Vercel deploy
+- **Phase 3** — 51 ta mahsulot (Notion/Drive), Collection, Product Page, 3D viewer, Cart
+- **Phase 4** — Tea preparation sahnasi, animatsiyalar, mobile lightweight mode, Vercel deploy
 - **Phase 5** — polish, performance, QA
