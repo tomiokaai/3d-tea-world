@@ -55,6 +55,20 @@
   text-shadow: 0 1px 20px color-mix(in srgb, var(--tea-ink) 80%, transparent);
 }
 
+.stop--end {
+  justify-content: center;
+  text-align: center;
+  background: var(--tea-ink);
+}
+
+.stop--end::before {
+  background: none;
+}
+
+.stop--end .stop__copy {
+  max-width: 32rem;
+}
+
 .rail {
   position: fixed;
   right: var(--space-3);

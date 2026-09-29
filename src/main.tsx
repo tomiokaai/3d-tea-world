@@ -8,6 +8,7 @@ import '@fontsource/inter/500.css'
 import './styles/tokens.css'
 import './styles/global.css'
 import './styles/journey.css'
+import './styles/shop.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
