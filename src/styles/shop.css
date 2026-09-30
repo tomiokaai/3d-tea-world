@@ -130,6 +130,11 @@
   background: #1c2b22;
   border-radius: 2px;
   overflow: hidden;
+  transition: transform var(--duration-scene) var(--ease-cinematic);
+}
+
+.product-card:hover .product-card__stage {
+  transform: translateY(-4px);
 }
 
 .product-card__info {
@@ -250,6 +255,17 @@
 @media (max-width: 900px) {
   .product-page {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .product-page {
+    padding: var(--space-3) var(--space-3) var(--space-5);
+    gap: var(--space-3);
   }
 }
 

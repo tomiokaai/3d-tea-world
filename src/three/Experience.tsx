@@ -12,6 +12,7 @@ import { SceneGate } from './SceneGate'
 import { ScrollDriver } from './ScrollDriver'
 import { TeaBox } from './TeaBox'
 import { AfricaScene } from './scenes/AfricaScene'
+import { BrewScene } from './scenes/BrewScene'
 import { PlantationScene } from './scenes/PlantationScene'
 import { ProductionScene } from './scenes/ProductionScene'
 import { TeaLeafScene } from './scenes/TeaLeafScene'
@@ -56,6 +57,9 @@ export function Experience() {
         </SceneGate>
         <SceneGate center={WORLD.production} extent={25}>
           <ProductionScene />
+        </SceneGate>
+        <SceneGate center={WORLD.brew} extent={9}>
+          <BrewScene />
         </SceneGate>
         <SceneGate center={WORLD.finale} extent={3}>
           <group position={WORLD.finale}>

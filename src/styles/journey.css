@@ -55,6 +55,26 @@
   text-shadow: 0 1px 20px color-mix(in srgb, var(--tea-ink) 80%, transparent);
 }
 
+.brew-timer {
+  margin-top: var(--space-3);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  pointer-events: auto;
+}
+
+.brew-timer__label {
+  font-size: var(--type-scale-small);
+  color: color-mix(in srgb, var(--tea-parchment) 70%, transparent);
+}
+
+.brew-timer__time {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--tea-gold);
+}
+
 .stop--end {
   justify-content: center;
   text-align: center;

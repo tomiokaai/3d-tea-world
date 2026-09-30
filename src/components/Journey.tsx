@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { journeyStops } from '@/config/journey'
 import { useJourneyScroll } from '@/hooks/useJourneyScroll'
+import { BrewTimer } from './BrewTimer'
 import { Hero } from './Hero'
 
 // Scroll container: one full-height section per journey stop.
@@ -21,6 +22,7 @@ export function Journey() {
             <div className="stop__copy">
               <h2 className="stop__title">{stop.title}</h2>
               <p className="stop__body">{stop.body}</p>
+              {stop.id === 'brew' && <BrewTimer />}
             </div>
           </section>
         ))}

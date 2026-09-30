@@ -8,6 +8,7 @@ export type StopId =
   | 'processing'
   | 'drying'
   | 'packaging'
+  | 'brew'
   | 'box'
 
 export interface JourneyStop {
@@ -29,7 +30,8 @@ export const WORLD = {
   plantation: [0, 0, -140],
   leaf: [0, 0, -200],
   production: [0, 0, -260],
-  finale: [0, 0, -320],
+  brew: [0, 0, -300],
+  finale: [0, 0, -340],
 } satisfies Record<string, Vec3>
 
 // One entry per scroll stop. Stops are evenly spaced in scroll progress,
@@ -120,12 +122,24 @@ export const journeyStops: JourneyStop[] = [
     side: 'right',
   },
   {
+    id: 'brew',
+    label: 'Brew',
+    title: 'Steeped, right here.',
+    body: 'Hot water, patience, and the leaf does the rest.',
+    camera: [0, 1.1, -292],
+    target: [0, 0.6, -300],
+    sky: '#241a10',
+    fogNear: 8,
+    fogFar: 40,
+    side: 'left',
+  },
+  {
     id: 'box',
     label: 'Your box',
     title: 'Now, in your hands.',
     body: 'From highland soil to a box on your shelf.',
-    camera: [0, 0.4, -316.6],
-    target: [0, 0, -320],
+    camera: [0, 0.4, -336.6],
+    target: [0, 0, -340],
     sky: '#14231c',
     fogNear: 4,
     fogFar: 9,
