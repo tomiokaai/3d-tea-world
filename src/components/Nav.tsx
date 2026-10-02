@@ -12,6 +12,7 @@ export function Nav() {
       </Link>
       <nav className="nav__links">
         <Link to="/collection">Collection</Link>
+        <Link to="/about">Story</Link>
       </nav>
       <button type="button" className="nav__cart" onClick={toggleCart} aria-label="Open cart">
         Cart

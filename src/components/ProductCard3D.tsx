@@ -5,6 +5,7 @@ import { Environment } from '@react-three/drei'
 import { TeaBox } from '@/three/TeaBox'
 import type { Product } from '@/types/product'
 import { formatPrice } from '@/utils/format'
+import { ExperienceBoundary } from './ExperienceBoundary'
 
 // Mounts its Canvas only once visible, so a 51-product grid stays cheap.
 export function ProductCard3D({ product }: { product: Product }) {
@@ -26,15 +27,17 @@ export function ProductCard3D({ product }: { product: Product }) {
     <Link to={`/product/${product.id}`} className="product-card" ref={ref}>
       <div className="product-card__stage">
         {visible && (
-          <Canvas dpr={1} camera={{ position: [0, 0.2, 2.6], fov: 28 }}>
-            <color attach="background" args={['#1c2b22']} />
-            <ambientLight intensity={0.5} color="#efe7d8" />
-            <directionalLight position={[3, 4, 3]} intensity={1.2} color="#c89b3c" />
-            <Suspense fallback={null}>
-              <TeaBox product={product} />
-              <Environment preset="apartment" />
-            </Suspense>
-          </Canvas>
+          <ExperienceBoundary fallbackClassName="canvas-fallback">
+            <Canvas dpr={1} camera={{ position: [0, 0.2, 2.6], fov: 28 }}>
+              <color attach="background" args={['#1c2b22']} />
+              <ambientLight intensity={0.5} color="#efe7d8" />
+              <directionalLight position={[3, 4, 3]} intensity={1.2} color="#c89b3c" />
+              <Suspense fallback={null}>
+                <TeaBox product={product} />
+                <Environment preset="apartment" />
+              </Suspense>
+            </Canvas>
+          </ExperienceBoundary>
         )}
       </div>
       <div className="product-card__info">

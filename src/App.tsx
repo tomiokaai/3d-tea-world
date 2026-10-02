@@ -12,6 +12,12 @@ const CollectionPage = lazy(() =>
 const ProductPage = lazy(() =>
   import('@/pages/ProductPage').then((m) => ({ default: m.ProductPage })),
 )
+const StoryPage = lazy(() =>
+  import('@/pages/StoryPage').then((m) => ({ default: m.StoryPage })),
+)
+const NotFoundPage = lazy(() =>
+  import('@/pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
+)
 
 function RouteFallback() {
   return <div style={{ position: 'fixed', inset: 0, background: 'var(--tea-ink)' }} />
@@ -38,6 +44,24 @@ export default function App() {
               <>
                 <Nav />
                 <ProductPage />
+              </>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <>
+                <Nav />
+                <StoryPage />
+              </>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <>
+                <Nav />
+                <NotFoundPage />
               </>
             }
           />
